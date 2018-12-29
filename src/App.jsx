@@ -13,11 +13,15 @@ class App extends Component {
           <div>TensorFlow.js demo</div>
         </header>
         <section className="app-content">
-          <Canvas/>
+          <Canvas onNewImage={image => this.onNewImage(image)}/>
           <Result/>
         </section>
       </div>
     );
+  }
+
+  onNewImage(image) {
+
   }
 }
 

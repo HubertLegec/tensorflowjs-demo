@@ -14,12 +14,18 @@
 
 .app-content {
   display: flex;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1000px;
+  margin: 24px auto;
 }
 
 .app-content > div {
   flex-grow: 1;
+  flex-basis: 0;
+  box-shadow: 2px 4px 19px -1px rgba(0,0,0,0.4);
+}
+
+.app-content > div + div {
+  margin-left: 24px;
 }
 
 @keyframes App-logo-spin {
