@@ -1,0 +1,11 @@
+.result-component {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-component > .result {
+    font-size: 8rem;
+}

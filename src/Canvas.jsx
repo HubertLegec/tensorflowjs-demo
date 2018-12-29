@@ -28,7 +28,11 @@ class CanvasComponent extends Component {
     );
   }
 
-  onClearClick = () => this._sketch.clear();
+  onClearClick = () => {
+    const {onNewImage} = this.props;
+    this._sketch.clear();
+    onNewImage(undefined);
+  }
 
   onRecognizeClick = () => {
     const {onNewImage} = this.props;
