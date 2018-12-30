@@ -1,0 +1,8 @@
+.training {
+    padding: 8px;
+    display: flex;
+}
+
+.training > * + * {
+    margin-left: 16px;
+}

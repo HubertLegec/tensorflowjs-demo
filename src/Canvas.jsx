@@ -10,22 +10,20 @@ class CanvasComponent extends Component {
   render() {
     const {containerWidth} = this.props;
     const canvasSize = `${containerWidth - 16}px`;
-    return (
-      <div className='canvas'>
-        <header className='canvas-header'>Write your digit below:</header>
-        <SketchField width={canvasSize}
-                     height={canvasSize}
-                     tool={Tools.Pencil}
-                     backgroundColor='#fafafa'
-                     lineColor='black'
-                     lineWidth={3}
-                     ref={c => (this._sketch = c)}/>
-        <div className='canvas-actions'>
-          <button onClick={this.onClearClick}>Clear</button>
-          <button onClick={this.onRecognizeClick}>Recognize</button>
-        </div>
+    return <div className='canvas'>
+      <header className='canvas-header'>Write your digit below:</header>
+      <SketchField width={canvasSize}
+                   height={canvasSize}
+                   tool={Tools.Pencil}
+                   backgroundColor='#fafafa'
+                   lineColor='black'
+                   lineWidth={3}
+                   ref={c => (this._sketch = c)}/>
+      <div className='canvas-actions'>
+        <button onClick={this.onClearClick}>Clear</button>
+        <button onClick={this.onRecognizeClick}>Recognize</button>
       </div>
-    );
+    </div>;
   }
 
   onClearClick = () => {
