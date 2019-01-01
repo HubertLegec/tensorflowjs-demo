@@ -1,5 +1,6 @@
 import * as tf from '@tensorflow/tfjs';
 import {MnistData} from "./MnistData";
+import {MnistModelBuilder} from "./MnistModelBuilder";
 
 export class MnistModel {
   static TRAIN_EPOCHS = 2;
@@ -17,51 +18,8 @@ export class MnistModel {
   _totalNumBatches;
 
   constructor() {
-    this._model = this.buildModel();
+    this._model = MnistModelBuilder.build();
     this._data = new MnistData();
-  }
-
-  get optimizer() {
-    return tf.train.sgd(MnistModel.LEARNING_RATE);
-  }
-
-  buildModel() {
-    const model = tf.sequential();
-    model.add(tf.layers.conv2d({
-      inputShape: [28, 28, 1],
-      kernelSize: 5,
-      filters: 8,
-      strides: 1,
-      activation: 'relu',
-      kernelInitializer: 'VarianceScaling'
-    }));
-    model.add(tf.layers.maxPooling2d({
-      poolSize: [2, 2],
-      strides: [2, 2]
-    }));
-    model.add(tf.layers.conv2d({
-      kernelSize: 5,
-      filters: 16,
-      strides: 1,
-      activation: 'relu',
-      kernelInitializer: 'VarianceScaling'
-    }));
-    model.add(tf.layers.maxPooling2d({
-      poolSize: [2, 2],
-      strides: [2, 2]
-    }));
-    model.add(tf.layers.flatten());
-    model.add(tf.layers.dense({
-      units: 10,
-      kernelInitializer: 'VarianceScaling',
-      activation: 'softmax'
-    }));
-    model.compile({
-      optimizer: this.optimizer,
-      loss: 'categoricalCrossentropy',
-      metrics: ['accuracy'],
-    });
-    return model;
   }
 
   async loadData() {
@@ -74,7 +32,6 @@ export class MnistModel {
   }
 
   async train(onBatchProcessed, onEpochProcessed) {
-
     // During the long-running fit() call for model training, we include
     // callbacks, so that we can plot the loss and accuracy values in the page
     // as the training progresses.
@@ -87,7 +44,6 @@ export class MnistModel {
         onEpochEnd: (epoch, logs) => this.onTrainEpochEnd(epoch, logs, onEpochProcessed)
       }
     });
-
     const testResult = this._model.evaluate(this._testData.xs, this._testData.labels);
     const testAccPercent = testResult[1].dataSync()[0] * 100;
     const finalValAccPercent = this._valAcc * 100;
