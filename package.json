@@ -2,7 +2,8 @@
   "name": "tensorflowjs-demo",
   "author": "Hubert Legęć",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "http://hubertlegec.github.io/tensorflowjs-demo",
   "dependencies": {
     "@tensorflow/tfjs": "^0.14.1",
     "rc-progress": "^2.2.6",
@@ -13,11 +14,16 @@
     "react-sketch": "^0.5.1",
     "recharts": "^1.4.2"
   },
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
