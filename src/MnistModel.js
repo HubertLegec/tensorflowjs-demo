@@ -3,7 +3,7 @@ import {MnistData} from "./MnistData";
 import {MnistModelBuilder} from "./MnistModelBuilder";
 
 export class MnistModel {
-  static TRAIN_EPOCHS = 3;
+  static TRAIN_EPOCHS = 5;
   static VALIDATION_SPLIT = 0.15;
   // How many examples the model should "see" before making a parameter update.
   static BATCH_SIZE = 128;

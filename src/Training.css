@@ -1,8 +1,17 @@
 .training {
-    padding: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.training > .training-controls {
     display: flex;
 }
 
-.training > * + * {
+.training > .training-controls > * + * {
     margin-left: 16px;
+}
+
+.training > .training-charts {
+    margin-top: 16px;
 }

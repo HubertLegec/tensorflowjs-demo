@@ -25,3 +25,10 @@ export async function base64ToImageData(base64Image, outputSize) {
   image.src = base64Image;
   return arrayLikeImage;
 }
+
+export function lastArrayItem(array) {
+  if (!array || array.length === 0) {
+    return undefined;
+  }
+  return array[array.length - 1];
+}
