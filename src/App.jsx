@@ -21,14 +21,17 @@ class App extends Component {
   render() {
     return <div className="app">
       <header className="app-header">
-        <div><img src={logo} className="app-logo" alt="logo"/></div>
+        <div><img src={logo}
+                  className="app-logo"
+                  alt="logo"/></div>
         <div>TensorFlow.js demo</div>
       </header>
       <section className="app-content">
         <Training onTrainingFinished={() => this.setState({...this.state, trainingFinished: true})}/>
       </section>
       <section className="app-content">
-        <Canvas onNewImage={image => this.onNewImage(image)} disabled={!this.state.trainingFinished}/>
+        <Canvas onNewImage={image => this.onNewImage(image)}
+                disabled={!this.state.trainingFinished}/>
         <Result digit={this.state.result}/>
       </section>
     </div>;

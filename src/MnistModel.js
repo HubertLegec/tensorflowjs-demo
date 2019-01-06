@@ -3,11 +3,11 @@ import {MnistData} from "./MnistData";
 import {MnistModelBuilder} from "./MnistModelBuilder";
 
 export class MnistModel {
-  static TRAIN_EPOCHS = 5;
   static VALIDATION_SPLIT = 0.15;
   // How many examples the model should "see" before making a parameter update.
   static BATCH_SIZE = 128;
 
+  trainEpochs = 5;
   _model;
   _data;
   _trainBatchCount = 0;
@@ -27,7 +27,7 @@ export class MnistModel {
     this._testData = this._data.testData;
     this._totalNumBatches = Math.ceil(
       this._trainData.xs.shape[0] * (1 - MnistModel.VALIDATION_SPLIT) / MnistModel.BATCH_SIZE
-    ) * MnistModel.TRAIN_EPOCHS;
+    ) * this.trainEpochs;
   }
 
   async train(onBatchProcessed, onEpochProcessed, onFinished) {
@@ -37,7 +37,7 @@ export class MnistModel {
     await this._model.fit(this._trainData.xs, this._trainData.labels, {
       batchSize: MnistModel.BATCH_SIZE,
       validationSplit: MnistModel.VALIDATION_SPLIT,
-      epochs: MnistModel.TRAIN_EPOCHS,
+      epochs: this.trainEpochs,
       callbacks: {
         onBatchEnd: (batch, logs) => this.onTrainingBatchEnd(batch, logs, onBatchProcessed),
         onEpochEnd: (epoch, logs) => this.onTrainEpochEnd(epoch, logs, onEpochProcessed)

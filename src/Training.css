@@ -4,8 +4,25 @@
     flex-direction: column;
 }
 
-.training > .training-controls {
+.training .controls {
+    margin: 16px 0;
     display: flex;
+    font-size: 1rem;
+    align-items: center;
+}
+
+.training .controls input {
+    width: 4em;
+    margin-left: 8px;
+    margin-right: 32px;
+    padding: 8px;
+    font-size: 1rem;
+}
+
+.training .controls button {
+    padding: 8px;
+    font-size: 1rem;
+    width: 4em;
 }
 
 .training > .training-controls > * + * {

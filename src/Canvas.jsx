@@ -20,8 +20,10 @@ class CanvasComponent extends Component {
                    lineWidth={50}
                    ref={c => (this._sketch = c)}/>
       <div className='canvas-actions'>
-        <button disabled={disabled} onClick={this.onClearClick}>Clear</button>
-        <button disabled={disabled} onClick={this.onRecognizeClick}>Recognize</button>
+        <button disabled={disabled}
+                onClick={this.onClearClick}>Clear</button>
+        <button disabled={disabled}
+                onClick={this.onRecognizeClick}>Recognize</button>
       </div>
     </div>;
   }

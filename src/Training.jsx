@@ -15,14 +15,17 @@ class TrainingComponent extends Component {
       progress: undefined,
       validationLoss: [],
       validationAccuracy: [],
-      trainingStarted: false
+      trainingStarted: false,
+      epochs: MNIST_MODEL.trainEpochs,
     }
   }
 
   render() {
     return <div className='training'>
       {this.state.trainingStarted && this.state.progress ?
-        <TrainingProgress progress={this.state.progress}/> :
+        <TrainingProgress progress={this.state.progress}
+                          currentEpoch={this.state.validationLoss.length}
+                          epochs={this.state.epochs}/> :
         this.renderNotStarted()
       }
       {this.state.trainingStarted ? this.renderCharts() : undefined}
@@ -32,7 +35,13 @@ class TrainingComponent extends Component {
   renderNotStarted() {
     return <div>
       <div>Training not started yet. Select number of epochs and click button to start.</div>
-      <div>
+      <div className='controls'>
+        <div>Number of epochs (between 2 and 10)</div>
+        <input type="number"
+               min="2"
+               max="10"
+               value={this.state.epochs}
+               onChange={this.onEpochsNumberChange}/>
         <button onClick={() => this.onTrainClick()}>Train</button>
       </div>
     </div>;
@@ -41,8 +50,11 @@ class TrainingComponent extends Component {
   renderCharts() {
     const {containerWidth} = this.props;
     return <div className='training-charts'>
-      <TrainingLineChartComponent containerWidth={containerWidth - 32} title="Training" chartData={this.chartData}/>
-      <TrainingLineChartComponent containerWidth={containerWidth - 32} title="Validation"
+      <TrainingLineChartComponent containerWidth={containerWidth - 32}
+                                  title="Training"
+                                  chartData={this.chartData}/>
+      <TrainingLineChartComponent containerWidth={containerWidth - 32}
+                                  title="Validation"
                                   chartData={this.chartValidationData}/>
     </div>;
   }
@@ -80,6 +92,12 @@ class TrainingComponent extends Component {
     const {onTrainingFinished} = this.props;
     onTrainingFinished(result);
   };
+
+  onEpochsNumberChange = (e) => {
+    const epochs = e.target.value;
+    MNIST_MODEL.epochs = epochs;
+    this.setState({...this.state, epochs});
+  }
 }
 
 export const Training = Dimensions()(TrainingComponent);
