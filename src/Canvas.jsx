@@ -15,9 +15,9 @@ class CanvasComponent extends Component {
       <SketchField width={canvasSize}
                    height={canvasSize}
                    tool={Tools.Pencil}
-                   backgroundColor='#fafafa'
+                   backgroundColor='#ffffff'
                    lineColor='black'
-                   lineWidth={3}
+                   lineWidth={50}
                    ref={c => (this._sketch = c)}/>
       <div className='canvas-actions'>
         <button onClick={this.onClearClick}>Clear</button>
@@ -30,14 +30,13 @@ class CanvasComponent extends Component {
     const {onNewImage} = this.props;
     this._sketch.clear();
     onNewImage(undefined);
-  }
+  };
 
   onRecognizeClick = () => {
     const {onNewImage} = this.props;
     const image = this.sketchImage;
-    console.log('onRecognizeClick', image);
     onNewImage(image);
-  }
+  };
 
   get sketchImage() {
     return this._sketch.toDataURL();

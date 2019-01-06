@@ -7,31 +7,32 @@ export class MnistModelBuilder {
     const model = tf.sequential();
     model.add(tf.layers.conv2d({
       inputShape: [28, 28, 1],
-      kernelSize: 5,
-      filters: 8,
-      strides: 1,
-      activation: 'relu',
-      kernelInitializer: 'VarianceScaling'
+      kernelSize: 3,
+      filters: 16,
+      activation: 'relu'
     }));
     model.add(tf.layers.maxPooling2d({
-      poolSize: [2, 2],
-      strides: [2, 2]
+      poolSize: 2,
+      strides: 2
     }));
     model.add(tf.layers.conv2d({
-      kernelSize: 5,
-      filters: 16,
-      strides: 1,
-      activation: 'relu',
-      kernelInitializer: 'VarianceScaling'
+      kernelSize: 3,
+      filters: 32,
+      activation: 'relu'
     }));
     model.add(tf.layers.maxPooling2d({
-      poolSize: [2, 2],
-      strides: [2, 2]
+      poolSize: 2,
+      strides: 2
+    }));
+    model.add(tf.layers.conv2d({
+      kernelSize: 3,
+      filters: 32,
+      activation: 'relu'
     }));
     model.add(tf.layers.flatten());
+    model.add(tf.layers.dense({units: 64, activation: 'relu'}));
     model.add(tf.layers.dense({
       units: 10,
-      kernelInitializer: 'VarianceScaling',
       activation: 'softmax'
     }));
     model.compile({

@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {MnistModel} from "./MnistModel";
 import './Training.css';
+import {MNIST_MODEL} from "./App";
 
 export class Training extends Component {
-  _mnistModel = new MnistModel();
 
   constructor(props) {
     super(props);
@@ -43,9 +42,9 @@ export class Training extends Component {
   }
 
   async onTrainClick() {
-    await this._mnistModel.loadData();
+    await MNIST_MODEL.loadData();
     console.log('onTrainClick - data loaded');
-    await this._mnistModel.train(this.onBatchProcessed, this.onEpochProcessed);
+    await MNIST_MODEL.train(this.onBatchProcessed, this.onEpochProcessed);
     console.log('onTrainClick - training finished');
   }
 

@@ -3,11 +3,10 @@ import {MnistData} from "./MnistData";
 import {MnistModelBuilder} from "./MnistModelBuilder";
 
 export class MnistModel {
-  static TRAIN_EPOCHS = 2;
+  static TRAIN_EPOCHS = 3;
   static VALIDATION_SPLIT = 0.15;
   // How many examples the model should "see" before making a parameter update.
-  static BATCH_SIZE = 64;
-  static LEARNING_RATE = 0.15;
+  static BATCH_SIZE = 128;
 
   _model;
   _data;
@@ -48,6 +47,17 @@ export class MnistModel {
     const testAccPercent = testResult[1].dataSync()[0] * 100;
     const finalValAccPercent = this._valAcc * 100;
     console.log('train - end', testAccPercent, finalValAccPercent);
+  }
+
+  predict(imageData) {
+    let inputTensor = tf.fromPixels(imageData, 1)
+      .reshape([1, 28, 28, 1])
+      .cast('float32')
+      .div(tf.scalar(255));
+    const predictionResult = this._model.predict(inputTensor).dataSync();
+
+    console.log('predict - output', predictionResult);
+    return predictionResult.indexOf(Math.max(...predictionResult));
   }
 
   async onTrainingBatchEnd(batch, logs, callback) {
