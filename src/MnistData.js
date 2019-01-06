@@ -15,7 +15,7 @@
  * =============================================================================
  */
 
-import * as tf from '@tensorflow/tfjs';
+import {tensor4d, tensor2d} from '@tensorflow/tfjs';
 
 export const IMAGE_H = 28;
 export const IMAGE_W = 28;
@@ -92,8 +92,8 @@ export class MnistData {
    *     `[numTrainExamples, 10]`.
    */
   get trainData() {
-    const xs = tf.tensor4d(this.trainImages, this.imagesTensorShape(this.trainImages.length));
-    const labels = tf.tensor2d(this.trainLabels, this.labelsTensorShape(this.trainLabels.length));
+    const xs = tensor4d(this.trainImages, this.imagesTensorShape(this.trainImages.length));
+    const labels = tensor2d(this.trainLabels, this.labelsTensorShape(this.trainLabels.length));
     return {xs, labels};
   }
 
@@ -106,8 +106,8 @@ export class MnistData {
    *     `[numTestExamples, 10]`.
    */
   get testData() {
-    let xs = tf.tensor4d(this.testImages, this.imagesTensorShape(this.testImages.length));
-    let labels = tf.tensor2d(this.testLabels, this.labelsTensorShape(this.testLabels.length));
+    let xs = tensor4d(this.testImages, this.imagesTensorShape(this.testImages.length));
+    let labels = tensor2d(this.testLabels, this.labelsTensorShape(this.testLabels.length));
     return {xs, labels};
   }
 

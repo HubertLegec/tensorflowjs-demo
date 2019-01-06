@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import {fromPixels, scalar, nextFrame} from '@tensorflow/tfjs';
 import {MnistData} from "./MnistData";
 import {MnistModelBuilder} from "./MnistModelBuilder";
 
@@ -48,10 +48,10 @@ export class MnistModel {
   }
 
   predict(imageData) {
-    let inputTensor = tf.fromPixels(imageData, 1)
+    let inputTensor = fromPixels(imageData, 1)
       .reshape([1, 28, 28, 1])
       .cast('float32')
-      .div(tf.scalar(255));
+      .div(scalar(255));
     const predictionResult = this._model.predict(inputTensor).dataSync();
 
     console.log('predict - output', predictionResult);
@@ -62,12 +62,12 @@ export class MnistModel {
     this._trainBatchCount++;
     const progress = this._trainBatchCount / this._totalNumBatches * 100;
     callback(progress, logs.loss, logs.acc);
-    await tf.nextFrame();
+    await nextFrame();
   }
 
   async onTrainEpochEnd(epoch, logs, callback) {
     this._valAcc = logs.val_acc;
     callback(this._trainBatchCount, logs.loss, logs.acc);
-    await tf.nextFrame();
+    await nextFrame();
   }
 }
