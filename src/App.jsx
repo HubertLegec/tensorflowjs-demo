@@ -14,7 +14,8 @@ class App extends Component {
 
   state = {
     image: undefined,
-    result: undefined
+    result: undefined,
+    trainingFinished: false
   };
 
   render() {
@@ -24,10 +25,10 @@ class App extends Component {
         <div>TensorFlow.js demo</div>
       </header>
       <section className="app-content">
-        <Training/>
+        <Training onTrainingFinished={() => this.setState({...this.state, trainingFinished: true})}/>
       </section>
       <section className="app-content">
-        <Canvas onNewImage={image => this.onNewImage(image)}/>
+        <Canvas onNewImage={image => this.onNewImage(image)} disabled={!this.state.trainingFinished}/>
         <Result digit={this.state.result}/>
       </section>
     </div>;

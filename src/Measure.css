@@ -1,0 +1,8 @@
+.measure {
+    display: flex;
+}
+
+.measure > .name {
+    font-weight: 500;
+    margin-right: 16px;
+}

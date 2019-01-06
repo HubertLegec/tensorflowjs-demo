@@ -30,7 +30,7 @@ export class MnistModel {
     ) * MnistModel.TRAIN_EPOCHS;
   }
 
-  async train(onBatchProcessed, onEpochProcessed) {
+  async train(onBatchProcessed, onEpochProcessed, onFinished) {
     // During the long-running fit() call for model training, we include
     // callbacks, so that we can plot the loss and accuracy values in the page
     // as the training progresses.
@@ -44,9 +44,9 @@ export class MnistModel {
       }
     });
     const testResult = this._model.evaluate(this._testData.xs, this._testData.labels);
-    const testAccPercent = testResult[1].dataSync()[0] * 100;
-    const finalValAccPercent = this._valAcc * 100;
-    console.log('train - end', testAccPercent, finalValAccPercent);
+    // const testAccPercent = testResult[1].dataSync()[0] * 100;
+    // const finalValAccPercent = this._valAcc * 100;
+    onFinished(testResult);
   }
 
   predict(imageData) {

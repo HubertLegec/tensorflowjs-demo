@@ -1,10 +1,16 @@
 import React from 'react';
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
 import './TrainingLineChart.css';
+import {Measure} from "./Measure";
+import {lastArrayItem} from "./utils";
 
 export const TrainingLineChartComponent = ({containerWidth, chartData, title}) => (
   <div className="training-line-chart">
     <div className='title'>{title}</div>
+    <div className='measures'>
+      <Measure name='Accuracy' value={lastArrayItem(chartData.map(v => v.accuracy))}/>
+      <Measure name='Loss' value={lastArrayItem(chartData.map(v => v.loss))}/>
+    </div>
     <ResponsiveContainer aspect={3} width={containerWidth}>
       <LineChart data={chartData}>
         <XAxis dataKey="idx" minTickGap={10}/>

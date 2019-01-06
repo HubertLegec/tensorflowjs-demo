@@ -1,4 +1,10 @@
 .training-line-chart > .title {
-    padding: 0 8px;
+    margin: 8px 0;
     font-size: 1.4rem;
+}
+
+.training-line-chart > .measures {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 8px 0;
 }

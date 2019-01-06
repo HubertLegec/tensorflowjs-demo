@@ -1,0 +1,7 @@
+.progress > .text {
+    margin-bottom: 16px;
+}
+
+.progress > .text > .percent {
+    font-weight: 500;
+}

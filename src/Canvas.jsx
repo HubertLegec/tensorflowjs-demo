@@ -8,7 +8,7 @@ class CanvasComponent extends Component {
   _sketch = null;
 
   render() {
-    const {containerWidth} = this.props;
+    const {containerWidth, disabled} = this.props;
     const canvasSize = `${containerWidth - 16}px`;
     return <div className='canvas'>
       <header className='canvas-header'>Write your digit below:</header>
@@ -20,8 +20,8 @@ class CanvasComponent extends Component {
                    lineWidth={50}
                    ref={c => (this._sketch = c)}/>
       <div className='canvas-actions'>
-        <button onClick={this.onClearClick}>Clear</button>
-        <button onClick={this.onRecognizeClick}>Recognize</button>
+        <button disabled={disabled} onClick={this.onClearClick}>Clear</button>
+        <button disabled={disabled} onClick={this.onRecognizeClick}>Recognize</button>
       </div>
     </div>;
   }
