@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/tensorflowjs-demo/precache-manifest.7aec9a9d981cde88ad0ad6495fba1976.js"
+  "/tensorflowjs-demo/precache-manifest.5fa7b31acf63f4be694169aadef624ac.js"
 );
 
 workbox.clientsClaim();
