@@ -24,12 +24,9 @@ const NUM_CLASSES = 10;
 const NUM_DATASET_ELEMENTS = 65000;
 
 const NUM_TRAIN_ELEMENTS = 55000;
-const NUM_TEST_ELEMENTS = NUM_DATASET_ELEMENTS - NUM_TRAIN_ELEMENTS;
 
-const MNIST_IMAGES_SPRITE_PATH =
-  'https://storage.googleapis.com/learnjs-data/model-builder/mnist_images.png';
-const MNIST_LABELS_PATH =
-  'https://storage.googleapis.com/learnjs-data/model-builder/mnist_labels_uint8';
+const MNIST_IMAGES_SPRITE_PATH = 'https://storage.googleapis.com/learnjs-data/model-builder/mnist_images.png';
+const MNIST_LABELS_PATH = 'https://storage.googleapis.com/learnjs-data/model-builder/mnist_labels_uint8';
 
 /**
  * A class that fetches the sprited MNIST dataset and provide data as
@@ -75,7 +72,8 @@ export class MnistData {
     });
 
     const labelsRequest = fetch(MNIST_LABELS_PATH);
-    const [imgResponse, labelsResponse] = await Promise.all([imgRequest, labelsRequest]);
+    const response = await Promise.all([imgRequest, labelsRequest]);
+    const labelsResponse = response[1];
 
     this.datasetLabels = new Uint8Array(await labelsResponse.arrayBuffer());
     // Slice the the images and labels into train and test sets.
