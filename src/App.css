@@ -1,17 +1,3 @@
-.app-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 2em;
-}
-
-.app-header {
-  background-color: #282c34;
-  display: flex;
-  align-items: center;
-  font-size: 2rem;
-  color: white;
-  padding: 8px 0;
-}
-
 .app-content {
   display: flex;
   max-width: 1000px;
@@ -26,13 +12,4 @@
 
 .app-content > div + div {
   margin-left: 24px;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

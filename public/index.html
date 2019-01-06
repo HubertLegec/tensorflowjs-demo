@@ -22,9 +22,54 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>TensorFlow.js demo - Hubert Legęć</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      #root {
+        flex-grow: 1;
+      }
+
+      .app-logo {
+        animation: App-logo-spin infinite 20s linear;
+        height: 2em;
+      }
+
+      .app-header {
+        background-color: #282c34;
+        display: flex;
+        align-items: center;
+        font-size: 2rem;
+        color: white;
+        padding: 8px 0;
+      }
+
+      .app-footer {
+        background-color: #282c34;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      @keyframes App-logo-spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
   </head>
   <body>
+    <header class="app-header">
+      <div><img src="./logo.svg" class="app-logo" alt="logo"/></div>
+      <div>TensorFlow.js demo</div>
+    </header>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -37,5 +82,8 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <footer class="app-footer">
+      &copy; Copyright 2019 Hubert Legęć
+    </footer>
   </body>
 </html>

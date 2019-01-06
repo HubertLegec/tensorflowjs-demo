@@ -44,8 +44,6 @@ export class MnistModel {
       }
     });
     const testResult = this._model.evaluate(this._testData.xs, this._testData.labels);
-    // const testAccPercent = testResult[1].dataSync()[0] * 100;
-    // const finalValAccPercent = this._valAcc * 100;
     onFinished(testResult);
   }
 

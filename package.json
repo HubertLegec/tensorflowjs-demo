@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": false,
   "homepage": "http://hubertlegec.github.io/tensorflowjs-demo",
+  "license": "MIT",
   "dependencies": {
     "@tensorflow/tfjs": "^0.14.1",
     "rc-progress": "^2.2.6",
@@ -15,7 +16,8 @@
     "recharts": "^1.4.2"
   },
   "devDependencies": {
-    "gh-pages": "^2.0.1"
+    "gh-pages": "^2.0.1",
+    "source-map-explorer": "^1.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,7 +25,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "analyze": "source-map-explorer build/static/js/1*.js"
   },
   "eslintConfig": {
     "extends": "react-app"
