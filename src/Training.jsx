@@ -95,7 +95,7 @@ class TrainingComponent extends Component {
 
   onEpochsNumberChange = (e) => {
     const epochs = e.target.value;
-    MNIST_MODEL.epochs = epochs;
+    MNIST_MODEL.trainEpochs = epochs;
     this.setState({...this.state, epochs});
   }
 }

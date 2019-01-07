@@ -34,15 +34,19 @@ export class MnistModel {
     // During the long-running fit() call for model training, we include
     // callbacks, so that we can plot the loss and accuracy values in the page
     // as the training progresses.
-    await this._model.fit(this._trainData.xs, this._trainData.labels, {
-      batchSize: MnistModel.BATCH_SIZE,
-      validationSplit: MnistModel.VALIDATION_SPLIT,
-      epochs: this.trainEpochs,
-      callbacks: {
-        onBatchEnd: (batch, logs) => this.onTrainingBatchEnd(batch, logs, onBatchProcessed),
-        onEpochEnd: (epoch, logs) => this.onTrainEpochEnd(epoch, logs, onEpochProcessed)
+    await this._model.fit(
+      this._trainData.xs,
+      this._trainData.labels,
+      {
+        batchSize: MnistModel.BATCH_SIZE,
+        validationSplit: MnistModel.VALIDATION_SPLIT,
+        epochs: this.trainEpochs,
+        callbacks: {
+          onBatchEnd: (batch, logs) => this.onTrainingBatchEnd(batch, logs, onBatchProcessed),
+          onEpochEnd: (epoch, logs) => this.onTrainEpochEnd(epoch, logs, onEpochProcessed)
+        }
       }
-    });
+    );
     const testResult = this._model.evaluate(this._testData.xs, this._testData.labels);
     onFinished(testResult);
   }
