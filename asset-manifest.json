@@ -1,13 +1,13 @@
 {
   "main.css": "/tensorflowjs-demo/static/css/main.a8888dc1.chunk.css",
-  "main.js": "/tensorflowjs-demo/static/js/main.0733cccf.chunk.js",
-  "main.js.map": "/tensorflowjs-demo/static/js/main.0733cccf.chunk.js.map",
-  "static/js/1.cbe737ba.chunk.js": "/tensorflowjs-demo/static/js/1.cbe737ba.chunk.js",
-  "static/js/1.cbe737ba.chunk.js.map": "/tensorflowjs-demo/static/js/1.cbe737ba.chunk.js.map",
+  "main.js": "/tensorflowjs-demo/static/js/main.15a8e95e.chunk.js",
+  "main.js.map": "/tensorflowjs-demo/static/js/main.15a8e95e.chunk.js.map",
+  "static/js/1.15e134e2.chunk.js": "/tensorflowjs-demo/static/js/1.15e134e2.chunk.js",
+  "static/js/1.15e134e2.chunk.js.map": "/tensorflowjs-demo/static/js/1.15e134e2.chunk.js.map",
   "runtime~main.js": "/tensorflowjs-demo/static/js/runtime~main.fbae9c08.js",
   "runtime~main.js.map": "/tensorflowjs-demo/static/js/runtime~main.fbae9c08.js.map",
   "static/css/main.a8888dc1.chunk.css.map": "/tensorflowjs-demo/static/css/main.a8888dc1.chunk.css.map",
   "index.html": "/tensorflowjs-demo/index.html",
-  "precache-manifest.5fa7b31acf63f4be694169aadef624ac.js": "/tensorflowjs-demo/precache-manifest.5fa7b31acf63f4be694169aadef624ac.js",
+  "precache-manifest.d5ed46c87d46d5b613c00fab98baa03d.js": "/tensorflowjs-demo/precache-manifest.d5ed46c87d46d5b613c00fab98baa03d.js",
   "service-worker.js": "/tensorflowjs-demo/service-worker.js"
 }
